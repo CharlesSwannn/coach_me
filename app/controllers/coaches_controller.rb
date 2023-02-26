@@ -1,5 +1,5 @@
 class CoachesController < ApplicationController
-  before_action :set_coach, only: %i[show edit update]
+  before_action :set_coach, only: %i[show edit update destroy]
   def index
     @coaches = Coach.all
   end
@@ -35,6 +35,8 @@ class CoachesController < ApplicationController
   end
 
   def destroy
+    @coach.delete
+    redirect_to coaches_path, status: :see_other
   end
 
   private

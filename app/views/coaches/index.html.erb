@@ -1,10 +1,12 @@
-<h1>All of our coaches ⚽️</h1>
-<div class="cards">
-  <% @coaches.all.each do |coach| %>
-    <%= link_to coach_path(coach), style:"text-decoration:none;" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= url_for (coach.photo) if coach.photo.attached? %>)">
-        <%= coach.name %>
-      </div>
+<div class="container">
+  <h1>All of our coaches ⚽️</h1>
+  <div class="cards">
+    <% @coaches.all.each do |coach| %>
+      <%= link_to coach_path(coach), style:"text-decoration:none;" do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= coach.photo.url if coach.photo.attached? %>); background-size: contain;">
+          <%= coach.name %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

@@ -1,5 +1,15 @@
-<h1>Coaches#show</h1>
-<p>Find me in app/views/coaches/show.html.erb</p>
-<%= image_tag @coach.photo, :gravity=>"faces", :crop=>"fill" if @coach.photo.attached? %>
+<div class="container">
+  <h1>Coaches#show</h1>
+  <p>Find me in app/views/coaches/show.html.erb</p>
 
-<%= link_to  "Edit", edit_coach_path %>
+
+  <%= cl_image_tag @coach.photo.key if @coach.photo.attached? %>
+
+
+  <% if current_user == @coach.user %>
+    <%= link_to  "Edit", edit_coach_path %>
+    <%= link_to  "Delete", coach_path(@coach), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this coach?" } %>
+  <% end %>
+
+  <%= link_to  "Book this coach!", path %>
+</div>
