@@ -3,5 +3,7 @@
   <%= f.text_field :name %>
   <%= f.label :details, label: "Details" %>
   <%= f.text_field :details, label: "Details" %>
+  <%= f.label :photo, "Add a photo" %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit %>
 <% end %>

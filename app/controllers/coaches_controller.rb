@@ -20,7 +20,6 @@ class CoachesController < ApplicationController
     else
       render :new, status: unprocessable_entity
     end
-    
   end
 
   def edit
@@ -35,7 +34,7 @@ class CoachesController < ApplicationController
   private
 
   def coach_params
-    params.require(:coach).permit(:name, :details)
+    params.require(:coach).permit(:name, :details, :photo)
   end
 
 end
