@@ -1,8 +1,10 @@
-<h1>Coaches#index</h1>
+<h1>All of our coaches ⚽️</h1>
 <div class="cards">
   <% @coaches.all.each do |coach| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <%= coach.name %>
-    </div>
+    <%= link_to coach_path(coach), style:"text-decoration:none;" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <%= coach.name %>
+      </div>
+    <% end %>
   <% end %>
 </div>

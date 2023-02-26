@@ -7,9 +7,20 @@ class CoachesController < ApplicationController
   end
 
   def new
+    @coach = Coach.new
   end
 
   def create
+    coach = Coach.create(coach_params)
+
+    coach.user = current_user
+
+    if coach.save
+      redirect_to coach_path(coach)
+    else
+      render :new, status: unprocessable_entity
+    end
+    
   end
 
   def edit
@@ -20,4 +31,11 @@ class CoachesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def coach_params
+    params.require(:coach).permit(:name, :details)
+  end
+
 end
