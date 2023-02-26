@@ -1,6 +1,8 @@
 <h1>Coaches#index</h1>
-<% @coaches.all.each do |coach| %>
-  <ul>
-    <li><%= coach.name %></li>
-  </ul>
-<% end %>
+<div class="cards">
+  <% @coaches.all.each do |coach| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <%= coach.name %>
+    </div>
+  <% end %>
+</div>
