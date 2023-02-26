@@ -1,5 +1,5 @@
 <h1>Coaches#show</h1>
 <p>Find me in app/views/coaches/show.html.erb</p>
-<%= image_tag @coach.photo if @coach.photo.attached? %>
+<%= image_tag @coach.photo, :gravity=>"faces", :crop=>"fill" if @coach.photo.attached? %>
 
 <%= link_to  "Edit", edit_coach_path %>
