@@ -2,7 +2,7 @@
 <div class="cards">
   <% @coaches.all.each do |coach| %>
     <%= link_to coach_path(coach), style:"text-decoration:none;" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= url_for (coach.photo) if coach.photo.attached? %>)">
         <%= coach.name %>
       </div>
     <% end %>

@@ -1,4 +1,5 @@
 class CoachesController < ApplicationController
+  before_action :set_coach, only: %i[show edit update]
   def index
     @coaches = Coach.all
   end
@@ -18,7 +19,7 @@ class CoachesController < ApplicationController
     if coach.save
       redirect_to coach_path(coach)
     else
-      render :new, status: unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -26,12 +27,21 @@ class CoachesController < ApplicationController
   end
 
   def update
+    if @coach.update(coach_params)
+      redirect_to coach_path(@coach)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
   end
 
   private
+
+  def set_coach
+    @coach = Coach.find(params[:id])
+  end
 
   def coach_params
     params.require(:coach).permit(:name, :details, :photo)
