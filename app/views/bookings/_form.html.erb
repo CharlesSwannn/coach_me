@@ -1,0 +1,9 @@
+<%= simple_form_for [coach, booking], data: { turbo: false } do |f| %>
+  <%= f.label :start_time, "Start time" %>
+  <%= f.date_field :start_time %>
+  <%= f.label :end_time, "End time" %>
+  <%= f.date_field :end_time %>
+  <%= f.label :location, "Location" %>
+  <%= f.text_field :location %>
+  <%= f.submit %>
+<% end %>
