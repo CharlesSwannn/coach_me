@@ -2,9 +2,25 @@ class CoachesController < ApplicationController
   before_action :set_coach, only: %i[show edit update destroy]
   def index
     @coaches = Coach.all
+    @markers = @coaches.geocoded.map do |coach|
+      {
+        lat: coach.latitude,
+        lng: coach.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {coach: coach}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
   end
 
   def show
+    @coaches = Coach.all
+    @markers = @coaches.geocoded.map do |coach|
+      {
+        lat: coach.latitude,
+        lng: coach.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {coach: coach})
+      }
+    end
   end
 
   def new
@@ -45,7 +61,7 @@ class CoachesController < ApplicationController
   end
 
   def coach_params
-    params.require(:coach).permit(:name, :details, :photo)
+    params.require(:coach).permit(:name, :details, :address, :photo)
   end
 
 end

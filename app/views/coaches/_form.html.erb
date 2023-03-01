@@ -1,9 +1,10 @@
 <%= simple_form_for coach do |f| %>
-    <%= f.label :name, label: "Name" %>
-  <%= f.text_field :name, label: "Name" %>
-  <%= f.label :details, label: "Details" %>
-  <%= f.text_field :details, label: "Details" %>
-  <%= f.label :photo, "Add a photo" %>
+  <%= f.input :name, label: "Name" %>
+  <%= f.input :details, label: "Details" %>
+  <%= f.input :address, label: "Address",
+   input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+   wrapper_html: {data: {controller: "address-autocomplete",
+   address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
   <%= f.input :photo, as: :file %>
   <%= f.submit %>
 <% end %>

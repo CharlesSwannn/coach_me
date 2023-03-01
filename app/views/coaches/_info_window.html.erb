@@ -1,0 +1,11 @@
+<%= link_to  coach_path(coach), class:"text-decoration-none", style:"color:black" do %>
+  <div style="border:none;">
+    <%= cl_image_tag coach.photo.key %>
+    <h2>
+      <%= coach.name %>
+    </h2>
+    <p>
+      <%= coach.address %>
+    </p>
+  </div>
+<% end %>

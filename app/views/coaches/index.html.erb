@@ -1,5 +1,8 @@
 <div class="container">
   <h1>All of our coaches ⚽️</h1>
+  <hr>
+  <%= render "map" %>
+  <hr>
   <div class="cards">
     <% @coaches.all.each do |coach| %>
       <%= link_to coach_path(coach), style:"text-decoration:none;" do %>
@@ -9,4 +12,5 @@
       <% end %>
     <% end %>
   </div>
+  <hr>
 </div>
