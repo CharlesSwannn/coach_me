@@ -13,7 +13,6 @@ class CoachesController < ApplicationController
 
   def create
     coach = Coach.create(coach_params)
-
     coach.user = current_user
 
     if coach.save
